@@ -3,7 +3,6 @@
 # This script automates the installation of Docker Engine and adds the current user
 # to the 'docker' group. It requires sudo permissions to run.
 
-
 # Check if the script is being run as root.
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run with sudo. Exiting."
@@ -11,7 +10,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Step 1: Install Docker Engine
-print_status "Step 1: Installing Docker Engine and its dependencies..."
+echo "Step 1: Installing Docker Engine and its dependencies..."
 
 # Update the package list
 apt-get update
@@ -35,10 +34,10 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 
 
 # Step 2: Add your user to the docker group
-print_status "Step 2: Adding the current user '$USER' to the 'docker' group."
+echo "Step 2: Adding the current user '$USER' to the 'docker' group."
 # This command adds the user to the group, but it won't be active until a new session.
 
 
-print_status "Docker setup finished successfully."
+echo "Docker setup finished successfully."
 
-sudo usermod -aG docker "$USER"
+# sudo usermod -aG docker "$USER"
